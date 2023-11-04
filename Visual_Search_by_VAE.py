@@ -156,7 +156,9 @@ meshgrid = np.array(meshgrid).reshape(2, nx*ny).T
 x_grid = model.decode(meshgrid)
 x_grid = x_grid.numpy().reshape(nx, ny, 28,28, 1)
 
-def get_all_embeddings(data, vae):
+
+@st.cache
+def get_all_embeddings(_vae, data):
     all_embeddings = []
     for image in data:
         image = image.reshape(1, *DIMS)  # Reshape your image as needed
@@ -169,8 +171,9 @@ vae = VAE(enc=encoder, dec=decoder, optimizer = optimizer)
 vae.build((None, *DIMS))
 vae.load_weights('vae_model.h5')
 
-all_embeddings = get_all_embeddings(train_images, vae)
+all_embeddings = get_all_embeddings(vae, train_images)
 
+@st.cache
 def query(image_id, k):
     query_embedding = all_embeddings[image_id]
     distances = np.zeros(len(all_embeddings))
@@ -182,7 +185,7 @@ def query(image_id, k):
 query_image_id = st.slider("Select an Image ID", 0, len(train_images) - 1, 15)
 k = st.slider("Number of Similar Images", 1, 10, 6)
 
-if st.button("Show Query Results", key='A'):
+if st.button("Show Query Results",key='A'):
     # Perform the query based on user input
     idx = query(query_image_id, k=k)
 
