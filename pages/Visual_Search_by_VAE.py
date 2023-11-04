@@ -2,7 +2,7 @@ import numpy as np
 #import pandas as pd
 import warnings
 import tensorflow as tf
-from tensorflow.keras.optimizers import Adam
+#from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.models import Model
 import tensorflow_probability as tfp
 ds = tfp.distributions
@@ -156,7 +156,6 @@ meshgrid = np.array(meshgrid).reshape(2, nx*ny).T
 x_grid = model.decode(meshgrid)
 x_grid = x_grid.numpy().reshape(nx, ny, 28,28, 1)
 
-
 def get_all_embeddings(data, vae):
     all_embeddings = []
     for image in data:
@@ -198,7 +197,7 @@ for i in range(k):
 st.pyplot(fig)
 
 # Add a button to save the figure as a PDF
-if st.button('Save Figure as PDF'):
+if st.button('Save Figure as PDF',key='B'):
     plt.savefig('query-example.pdf')
 
 # Display the Streamlit app
