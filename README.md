@@ -31,5 +31,5 @@ To run locally,
 **Streamlit Application links**
 Part 1 Deployed Application - Visual Search By Artistic Style :- https://visualartisticstylepy-kaa4hp6e4fv89kklerap9s.streamlit.app/<br>
 Part 2 Deployed Application - Visual Search By Similarity :- https://visualsearchbysimilaritypy-ayussrpnu38uzytzslc7pu.streamlit.app/<br>
-Part 3 Deployed Application - Visual Search By VAE:- https://visualsearchbyvaepy-59xksnydvoqjcndfdqyxqv.streamlit.app/
+Part 3 Deployed Application - Visual Search By VAE:- https://visualsearchbyvaepy-3xui3hpphwtrrdq9qmpg4n.streamlit.app/
 
