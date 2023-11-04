@@ -182,19 +182,20 @@ def query(image_id, k):
 query_image_id = st.slider("Select an Image ID", 0, len(train_images) - 1, 15)
 k = st.slider("Number of Similar Images", 1, 10, 6)
 
-# Perform the query based on user input
-idx = query(query_image_id, k=k)
+if st.button("Show Query Results", key='A'):
+    # Perform the query based on user input
+    idx = query(query_image_id, k=k)
 
-# Create a plot for the results
-st.write('Query Results:')
-fig, ax = plt.subplots(1, k, figsize=(k*2, 2))
-# Display the selected images
-for i in range(k):
-    ax[i].imshow(1 - train_images[idx[i], :])
-    ax[i].axis('off')
+    # Create a plot for the results
+    st.write('Query Results:')
+    fig, ax = plt.subplots(1, k, figsize=(k*2, 2))
+    # Display the selected images
+    for i in range(k):
+        ax[i].imshow(1 - train_images[idx[i], :])
+        ax[i].axis('off')
 
-# Save the figure as a PDF file (optional)
-st.pyplot(fig)
+    # Save the figure as a PDF file (optional)
+    st.pyplot(fig)
 
 # Add a button to save the figure as a PDF
 if st.button('Save Figure as PDF',key='B'):
