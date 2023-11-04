@@ -157,8 +157,7 @@ x_grid = model.decode(meshgrid)
 x_grid = x_grid.numpy().reshape(nx, ny, 28,28, 1)
 
 
-@st.cache
-def get_all_embeddings(_vae, data):
+def get_all_embeddings(vae, data):
     all_embeddings = []
     for image in data:
         image = image.reshape(1, *DIMS)  # Reshape your image as needed
@@ -173,7 +172,7 @@ vae.load_weights('vae_model.h5')
 
 all_embeddings = get_all_embeddings(vae, train_images)
 
-@st.cache
+
 def query(image_id, k):
     query_embedding = all_embeddings[image_id]
     distances = np.zeros(len(all_embeddings))
@@ -185,20 +184,20 @@ def query(image_id, k):
 query_image_id = st.slider("Select an Image ID", 0, len(train_images) - 1, 15)
 k = st.slider("Number of Similar Images", 1, 10, 6)
 
-if st.button("Show Query Results",key='A'):
+
     # Perform the query based on user input
-    idx = query(query_image_id, k=k)
+idx = query(query_image_id, k=k)
 
     # Create a plot for the results
-    st.write('Query Results:')
-    fig, ax = plt.subplots(1, k, figsize=(k*2, 2))
+st.write('Query Results:')
+fig, ax = plt.subplots(1, k, figsize=(k*2, 2))
     # Display the selected images
-    for i in range(k):
-        ax[i].imshow(1 - train_images[idx[i], :])
-        ax[i].axis('off')
+for i in range(k):
+    ax[i].imshow(1 - train_images[idx[i], :])
+    ax[i].axis('off')
 
     # Save the figure as a PDF file (optional)
-    st.pyplot(fig)
+st.pyplot(fig)
 
 # Add a button to save the figure as a PDF
 if st.button('Save Figure as PDF',key='B'):
