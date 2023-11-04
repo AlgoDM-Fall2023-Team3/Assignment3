@@ -26,7 +26,7 @@ To run locally,
 **codelab documentation :** https://codelabs-preview.appspot.com/?file_id=1B5fnv2AfmZ4zUolGVblAvwvAe0AmXJoju7wbWlahH6g#0
 
 
-**recording : **
+**recording :**
 
 **Streamlit Application links**
 Part 1 Deployed Application - Visual Search By Artistic Style :- https://visualartisticstylepy-kaa4hp6e4fv89kklerap9s.streamlit.app/<br>
